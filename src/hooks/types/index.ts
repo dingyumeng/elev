@@ -3,7 +3,7 @@ export interface TreeNodeCommon {
   [field: string]: unknown;
 }
 
-export interface FlattenToTreeAttr {
+export interface FlattenToTreeOptions {
   key: string;
   root: string;
   parentKey: string;

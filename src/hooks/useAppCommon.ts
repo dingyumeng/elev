@@ -1,7 +1,7 @@
 import { omit } from "lodash";
 import { DirectiveBinding } from "vue/types/options";
 import { DefaultRoot } from "@/common/constants";
-import { FlattenToTreeAttr, TreeNodeCommon } from "./types";
+import { FlattenToTreeOptions, TreeNodeCommon } from "./types";
 
 /**
  * @description v-permission 的核心逻辑
@@ -71,12 +71,12 @@ export const useTreeToFlatten = <T extends TreeNodeCommon>(
 /**
  * @description 把平铺的数据组装成树结构
  * @param source T[]
- * @param options FlattenToTreeAttr
+ * @param options FlattenToTreeOptions
  * @returns T[]
  */
 export const useFlattenToTree = <T extends TreeNodeCommon>(
   source: T[],
-  options: FlattenToTreeAttr = {
+  options: FlattenToTreeOptions = {
     key: 'id',
     root: DefaultRoot,
     parentKey: 'parentId'
