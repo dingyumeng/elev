@@ -96,7 +96,7 @@ export const useFlattenToTree = <T extends TreeNodeCommon>(
 };
 
 /**
- * @description 向上查找父级id
+ * @description 向上查找父级
  * @param value string 子节点 id
  * @param source 树结构数据或已平铺的树数据
  * @param options ProcessTreeOptions
