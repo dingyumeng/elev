@@ -1,21 +1,18 @@
-import { omit } from "lodash";
-import { DirectiveBinding } from "vue/types/options";
-import { DefaultRoot } from "@/common/constants";
-import { FlattenToTreeOptions, TreeNodeCommon } from "./types";
+import { omit } from 'lodash';
+import { DirectiveBinding } from 'vue/types/options';
+import { DefaultRoot } from '@/common/constants';
+import { ProcessTreeOptions, TreeBranchValues, TreeNodeCommon } from './types';
 
 /**
  * @description v-permission 的核心逻辑
  * @param binding DirectiveBinding
  * @param permissions Array<string>
- * @returns 
+ * @returns
  */
-export const usePermission = (
-  binding: DirectiveBinding,
-  permissions: string[]
-): boolean => {
+export const usePermission = (binding: DirectiveBinding, permissions: Array<string>): boolean => {
   const { value } = binding;
 
-  const process = (raw: string[]): boolean[] => {
+  const process = (raw: Array<string>): boolean[] => {
     const expressions = raw.map(x => x.trim());
     const permissionPartial = expressions.filter(x => x);
     return permissionPartial.map(x => permissions.includes(x));
@@ -46,10 +43,7 @@ export const usePermission = (
  * @param childrenName string 子级名称，默认 children
  * @returns T[]
  */
-export const useTreeToFlatten = <T extends TreeNodeCommon>(
-  source: Array<T>,
-  childrenName = 'children'
-): T[] => {
+export const useTreeToFlatten = <T extends TreeNodeCommon>(source: Array<T>, childrenName = 'children'): T[] => {
   const allTreeNode: T[] = [];
 
   const recursion = (children: T[]) => {
@@ -71,15 +65,15 @@ export const useTreeToFlatten = <T extends TreeNodeCommon>(
 /**
  * @description 把平铺的数据组装成树结构
  * @param source T[]
- * @param options FlattenToTreeOptions
+ * @param options ProcessTreeOptions
  * @returns T[]
  */
 export const useFlattenToTree = <T extends TreeNodeCommon>(
   source: T[],
-  options: FlattenToTreeOptions = {
+  options: ProcessTreeOptions = {
     key: 'id',
     root: DefaultRoot,
-    parentKey: 'parentId'
+    parentKey: 'parentId',
   }
 ): T[] => {
   const { key, root, parentKey } = options;
@@ -99,4 +93,45 @@ export const useFlattenToTree = <T extends TreeNodeCommon>(
   recursion(parents);
 
   return parents;
-}
+};
+
+/**
+ * @description 向上查找父级id
+ * @param value string 子节点 id
+ * @param source 树结构数据或已平铺的树数据
+ * @param options ProcessTreeOptions
+ * @returns TreeBranchValues
+ */
+export const useFindParentNodes = <T extends TreeNodeCommon>(
+  value: string,
+  source: T[],
+  options: ProcessTreeOptions = {
+    key: 'id',
+    parentKey: 'parentId',
+  }
+): TreeBranchValues<T> => {
+  const nodes: Array<T> = [];
+  const values: Array<string> = [value];
+
+  const { key, parentKey } = options;
+  const flattenNodes = useTreeToFlatten(source);
+  const currentNode = flattenNodes.find(x => x[key] === value);
+
+  const recursion = (current: T) => {
+    const parent = flattenNodes.find(x => x[key] === current[parentKey]);
+
+    if (parent) {
+      nodes.unshift(parent);
+      values.unshift(parent[key] as string);
+      recursion(parent);
+    }
+  };
+
+  if (!currentNode) {
+    throw Error(`未在提供的 source 中查找到当前 id: ${value}`);
+  }
+
+  nodes.push(currentNode);
+  recursion(currentNode);
+  return { values, nodes };
+};

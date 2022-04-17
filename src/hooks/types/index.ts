@@ -1,10 +1,15 @@
 export interface TreeNodeCommon {
-  children?: TreeNodeCommon[];
+  children?: Array<TreeNodeCommon>;
   [field: string]: unknown;
 }
 
-export interface FlattenToTreeOptions {
+export interface ProcessTreeOptions {
   key: string;
-  root: string;
+  root?: string;
   parentKey: string;
+}
+
+export interface TreeBranchValues<T> {
+  values: Array<string>;
+  nodes: Array<T>;
 }
