@@ -18,7 +18,7 @@ export const DefaultRoot = '0';
 export const TreeRootIds = {
   Menu: '0',
   Role: '0',
-  Department: '0',  
+  Department: '0',
 };
 
 /**
