@@ -8,17 +8,28 @@ const { VUE_APP_NAME } = process.env;
 const addKeyPrefix = (key: string) => `${VUE_APP_NAME}-${key}`;
 
 /**
- * 开发期间树的顶级节点默认用 '0'
- */
-export const DefaultRoot = '0';
-
-/**
  * 各个类型的树的顶级节点id
  */
 export const TreeRootIds = {
   Menu: '0',
   Role: '0',
   Department: '0',
+};
+
+/**
+ * 开发期间树的顶级节点默认用 '0'
+ */
+export const DefaultRoot = TreeRootIds.Menu;
+
+/**
+ * 菜单类型
+ * @property Directory 等于 <ElSubMenu />
+ * @property Menu 等于 <ElMenuItem />
+ */
+export const MenuTypes = {
+  Directory: 'Directory',
+  Menu: 'Menu',
+  Button: 'Button',
 };
 
 /**
