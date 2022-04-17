@@ -40,17 +40,16 @@ export const usePermission = (binding: DirectiveBinding, permissions: Array<stri
 /**
  * @description 把树状结构平铺开（父子级放入同一数组）
  * @param source T[]
- * @param childrenName string 子级名称，默认 children
  * @returns T[]
  */
-export const useTreeToFlatten = <T extends TreeNodeCommon>(source: Array<T>, childrenName = 'children'): T[] => {
+export const useTreeToFlatten = <T extends TreeNodeCommon>(source: T[]): T[] => {
   const allTreeNode: T[] = [];
 
   const recursion = (children: T[]) => {
     children.forEach(item => {
       const { children } = item;
 
-      allTreeNode.push(omit(item, childrenName) as T);
+      allTreeNode.push(omit(item, 'children') as T);
 
       if (children && children.length) {
         recursion((children as T[]) || []);
