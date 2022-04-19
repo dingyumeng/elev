@@ -1,4 +1,4 @@
-import { RouteConfig } from 'vue-router';
+import { RouteConfig, RouteMeta } from 'vue-router';
 import { MenuTypes } from '@/common/constants';
 import { useTreeToFlatten, useFlattenToTree } from './useAppCommon';
 import { RouteConfigCommon } from './types';
@@ -23,19 +23,14 @@ export const useTransformRoute = (routes: RouteConfigCommon[]): RouteConfig[] =>
         routeChildren = recursion(children);
       }
 
+      const meta: RouteMeta = { icon, visible, target, outlink, type, status };
+
       return {
         path,
         name,
         redirect,
         component,
-        meta: {
-          icon,
-          visible,
-          target,
-          outlink,
-          type,
-          status,
-        },
+        meta,
         children: routeChildren,
       };
     });
