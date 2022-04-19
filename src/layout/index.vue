@@ -15,7 +15,7 @@ import SiderBar from './components/SiderBar.vue';
   name: 'Layout',
   components: {
     SiderBar,
-  }
+  },
 })
 export default class Layout extends Vue {}
 </script>

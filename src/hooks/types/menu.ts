@@ -1,4 +1,4 @@
-import { RouteConfigCommon } from './'; 
+import { RouteConfigCommon } from './';
 
 export interface MenuOptions {
   headMenu: RouteConfigCommon[];

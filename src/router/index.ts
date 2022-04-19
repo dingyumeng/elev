@@ -13,8 +13,8 @@ const routes: Array<RouteConfig> = [
       {
         path: '',
         name: 'Dashboard',
-        component: Dashboard
-      }
+        component: Dashboard,
+      },
     ],
   },
 ];
