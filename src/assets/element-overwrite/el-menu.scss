@@ -33,7 +33,7 @@ $menu-height: 40px;
   }
 }
 
-.el-submenu {  
+.el-submenu {
   .el-menu-item {
     height: $menu-height;
     line-height: $menu-height;
@@ -43,4 +43,12 @@ $menu-height: 40px;
 .el-submenu__title {
   height: $menu-height;
   line-height: $menu-height;
+
+  i {
+    color: $--color-text-primary;
+  }
+
+  [class^="el-icon-"] {
+    font-size: 1em;
+  }
 }
