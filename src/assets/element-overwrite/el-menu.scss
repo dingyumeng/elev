@@ -1,0 +1,46 @@
+@import '../theme.scss';
+
+$menu-height: 40px;
+
+.el-menu {
+  border-right: none;
+}
+
+.el-menu-item {
+  height: $menu-height;
+  line-height: $menu-height;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    transform: scaleY(.0001);
+    border-right: 3px solid $--color-primary;
+    transition: all .15s cubic-bezier(.215,.61,.355,1);
+  }
+}
+
+.el-menu-item.is-active {
+  background-color: $--color-primary-light-9;
+
+  &::after {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: all .15s cubic-bezier(.645,.045,.355,1);
+  }
+}
+
+.el-submenu {  
+  .el-menu-item {
+    height: $menu-height;
+    line-height: $menu-height;
+  }
+}
+
+.el-submenu__title {
+  height: $menu-height;
+  line-height: $menu-height;
+}
