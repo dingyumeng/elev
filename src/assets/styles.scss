@@ -10,9 +10,17 @@ body {
   line-height: 1;
   font-size: 14px;
   color: $text-color;
+  background-color: #f0f2f5;
   font-family: Arial, 'Courier New', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
 }
 
 *, ::after, ::before {
   box-sizing: border-box;
 }
+
+a {
+  color:inherit;
+  text-decoration: none;
+}
+
+@import './layout/index.scss';
