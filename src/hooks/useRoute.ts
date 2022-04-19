@@ -1,14 +1,14 @@
 import { RouteConfig } from 'vue-router';
-import { useTreeToFlatten, useFlattenToTree } from './useAppCommon';
 import { MenuTypes } from '@/common/constants';
-import { RouteConfigCommon } from './types/route';
+import { useTreeToFlatten, useFlattenToTree } from './useAppCommon';
+import { RouteConfigCommon } from './types';
 
 /**
  * @description 把后端返回的路由数据处理成 vue-router 需要的 RouteConfig[]
  * @param routes RouteConfigCommon[]
  * @returns RouteConfig[]
  */
-export const useTransformRoute = <T extends RouteConfigCommon>(routes: T[]): RouteConfig[] => {
+export const useTransformRoute = (routes: RouteConfigCommon[]): RouteConfig[] => {
   const flatten = useTreeToFlatten(routes);
   const filtered = flatten.filter(x => x.type !== MenuTypes.Button);
   const zipNodes = useFlattenToTree(filtered);
