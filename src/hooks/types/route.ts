@@ -9,15 +9,15 @@ export interface RouteConfigCommon {
   parentId: string;
   type: 'Directory' | 'Menu' | 'Button';
   icon?: string;
-  visible?: string;
-  status?: string;
+  visible?: boolean;
+  status?: boolean;
   order?: number;
   creator?: string;
   updater?: string;
   createTime?: string;
   updateTime?: string;
   premission?: string;
-  outlink?: '1' | '0';
-  target?: '1' | '0';
+  outlink?: boolean;
+  target?: string;
   [field: string]: unknown;
 }
