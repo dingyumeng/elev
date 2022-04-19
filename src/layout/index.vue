@@ -1,29 +1,28 @@
 <template>
   <div class="layout-wrapper">
-    <SiderBar />
+    <div class="layout-sider-placeholder"></div>
+    <Sider />
     <div class="layout-container">
-      <!-- <router-view></router-view> -->
+      <header class="layout-header-placeholder"></header>
+      <Header />
+      <main class="layout-main-content">
+        <router-view></router-view>
+      </main>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import SiderBar from './components/SiderBar.vue';
+import Sider from './components/Sider.vue';
+import Header from './components/Header.vue';
 
 @Component({
   name: 'Layout',
   components: {
-    SiderBar,
+    Header,
+    Sider,
   },
 })
 export default class Layout extends Vue {}
 </script>
-
-<style lang="scss">
-.layout-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
-</style>
