@@ -1,10 +1,5 @@
 <template>
   <div class="header-space-content">
-    <div class="header-space-item">
-      <ElTooltip content="搜索" placement="bottom">
-        <i class="el-icon el-icon-search"></i>
-      </ElTooltip>
-    </div>
     <a href="javascript:void(0);" class="header-space-item small">单位：稻妻社奉行</a>
     <a href="javascript:void(0);" class="header-space-item">
       <ElTooltip content="技术支持" placement="bottom">
@@ -14,6 +9,11 @@
     <a href="javascript:void(0);" class="header-space-item" @click="requestFullScreen">
       <ElTooltip content="全屏" placement="bottom">
         <i class="el-icon el-icon-full-screen"></i>
+      </ElTooltip>
+    </a>
+    <a href="javascript:void(0);" class="header-space-item">
+      <ElTooltip content="通知" placement="bottom">
+        <i class="el-icon el-icon-bell"></i>
       </ElTooltip>
     </a>
     <div class="header-space-item small">
