@@ -1,7 +1,7 @@
 <template>
   <aside class="layout-sider">
     <div class="layout-sider-menu">
-      <ElMenu default-active="2">
+      <ElMenu default-active="2" class="el-menu-sider">
         <ElSubmenu index="1">
           <template slot="title">
             <i class="el-icon-setting"></i>
