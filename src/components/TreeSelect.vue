@@ -47,7 +47,7 @@
 import { Vue, Component, Prop, Ref, Watch } from 'vue-property-decorator';
 import { has, isEmpty } from 'lodash';
 import { ElTree, TreeData } from 'element-ui/types/tree';
-// import { useFlattenTree } from '@/hooks/useMenuManage';
+import { useTreeToFlatten } from '@/hooks/useAppCommon';
 
 interface CustomAttrs {
   [field: string]: unknown;
@@ -69,8 +69,7 @@ export default class TreeSelect<D extends TreeData> extends Vue {
   }
 
   get flattenTree() {
-    // return useFlattenTree(this.data);
-    return this.data;
+    return useTreeToFlatten(this.data);
   }
 
   get currentNodeKey() {
