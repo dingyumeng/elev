@@ -2,34 +2,8 @@
   <header class="layout-header layout-fixed-header">
     <div class="layout-header-container">
       <Logo />
-      <div class="layout-header-center">
-        <ElMenu
-          default-active="2"
-          mode="horizontal"
-          text-color="#ffffffbf"
-          background-color="#001529"
-          active-text-color="#1890ff"
-        >
-          <ElSubmenu index="1">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span slot="title">系统设置</span>
-            </template>
-            <ElMenuItem index="1-1">
-              <template slot="title">
-                <i class="el-icon-menu"></i>
-                <span slot="title">菜单管理</span>
-              </template>
-            </ElMenuItem>
-          </ElSubmenu>
-          <ElMenuItem index="2">
-            <template slot="title">
-              <i class="el-icon-bell"></i>
-              <span slot="title">通知公告</span>
-            </template>
-          </ElMenuItem>
-        </ElMenu>
-      </div>
+      <div class="layout-header-center"></div>
+      <Space />
     </div>
   </header>
 </template>
@@ -37,11 +11,13 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import Logo from './Logo.vue';
+import Space from './Space.vue';
 
 @Component({
   name: 'Header',
   components: {
     Logo,
+    Space,
   },
 })
 export default class Header extends Vue {}
