@@ -31,19 +31,3 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({ name: 'Sider' })
 export default class Sider extends Vue {}
 </script>
-
-<style lang="scss">
-.layout-sider {
-  width: 208px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding-top: 48px;
-  background-color: #ffffff;
-  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
-}
-</style>

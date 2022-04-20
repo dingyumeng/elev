@@ -20,28 +20,3 @@ export default class Header extends Vue {
   };
 }
 </script>
-
-<style lang="scss">
-.layout-header-logo {
-  display: flex;
-  min-width: 192px;
-
-  a {
-    display: flex;
-    align-items: center;
-
-    img {
-      height: 28px;
-    }
-
-    h1 {
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 600;
-      height: 32px;
-      line-height: 32px;
-      margin: 0 0 0 12px;
-    }
-  }
-}
-</style>
