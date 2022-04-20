@@ -1,7 +1,7 @@
 <template>
   <div :class="layoutWrapperClass">
     <a href="javascript:void(0);">
-      <img src="/logo.svg" alt="logo" />
+      <img src="/full-logo.svg" alt="logo" />
       <h1>EleV Pro</h1>
     </a>
   </div>
