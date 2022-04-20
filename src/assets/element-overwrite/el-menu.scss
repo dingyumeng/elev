@@ -1,54 +1,78 @@
 @import '../theme.scss';
 
 $menu-height: 40px;
+$horizontal-menu-height: 48px;
 
-.el-menu {
-  border-right: none;
-}
-
-.el-menu-item {
-  height: $menu-height;
-  line-height: $menu-height;
-
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    content: "";
-    transform: scaleY(.0001);
-    border-right: 3px solid $--color-primary;
-    transition: all .15s cubic-bezier(.215,.61,.355,1);
-  }
-}
-
-.el-menu-item.is-active {
-  background-color: $--color-primary-light-9;
-
-  &::after {
-    opacity: 1;
-    transform: scaleY(1);
-    transition: all .15s cubic-bezier(.645,.045,.355,1);
-  }
-}
-
-.el-submenu {
-  .el-menu-item {
-    height: $menu-height;
-    line-height: $menu-height;
-  }
-}
-
-.el-submenu__title {
-  height: $menu-height;
-  line-height: $menu-height;
-
-  i {
-    color: $--color-text-primary;
-  }
-
+/** 纵向菜单样式覆盖 */
+%el-icon-size {
+  i,
   [class^="el-icon-"] {
-    font-size: 1em;
+    color: inherit;
+    font-size: 1rem;
+    vertical-align: -0.125rem;
+  }
+}
+
+%el-menu-item-height {
+  height: $horizontal-menu-height;
+  line-height: $horizontal-menu-height;
+}
+
+.el-menu-sider {
+  border-right: none;
+  
+  .el-menu-item {
+    @extend %el-menu-item-height;
+  
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      content: "";
+      transform: scaleY(.0001);
+      border-right: 3px solid $--color-primary;
+      transition: all .15s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  
+    @extend %el-icon-size;
+    
+    &.is-active {
+      background-color: $--color-primary-light-9;
+    
+      &::after {
+        opacity: 1;
+        transform: scaleY(1);
+        transition: all .15s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+    }
+  }
+
+  .el-submenu {
+    .el-submenu__title {
+      @extend %el-menu-item-height;
+      @extend %el-icon-size;
+    }
+    
+    .el-menu-item {
+      @extend %el-menu-item-height;
+    }
+  }
+}
+
+/** 横向并且在分割模式下的菜单样式覆盖 */
+.el-menu--horizontal {
+  > .el-submenu {
+    .el-submenu__title {
+      @extend %el-icon-size;
+      @extend %el-menu-item-height;
+    }
+  }
+
+  > .el-menu-item {
+    border: none;
+    @extend %el-icon-size;
+    @extend %el-menu-item-height;
   }
 }
