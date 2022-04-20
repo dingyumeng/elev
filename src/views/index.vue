@@ -1,5 +1,7 @@
 <template>
-  <div class="dashboard-page-wrapper"></div>
+  <div class="dashboard-page-wrapper">
+    <ElButton type="primary">Button</ElButton>
+  </div>
 </template>
 
 <script lang="ts">
