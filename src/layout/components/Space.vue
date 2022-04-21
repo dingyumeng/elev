@@ -20,9 +20,7 @@
       <ElDropdown placement="bottom-start" szie="medium" trigger="click">
         <div class="user-box">
           <ElAvatar :src="defaultAvatar" size="small" />
-          <a href="javascript:void(0);" class="username">
-            你好 神里凌华
-          </a>
+          <a href="javascript:void(0);" class="username">神里凌华</a>
         </div>
         <ElDropdownMenu slot="dropdown" class="global-user-select-dropdown">
           <ElDropdownItem icon="el-icon-user">个人信息</ElDropdownItem>
