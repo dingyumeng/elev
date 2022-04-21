@@ -1,13 +1,43 @@
+@import './variables.scss';
+@import '../theme.scss';
+
 .layout-sider {
-  width: 208px;
+  width: $layout-sider-width;
   height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   padding-top: 48px;
   background-color: #ffffff;
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+}
+
+.layout-sider-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.layout-sider-menu {
+  flex: 1 1 0%;
+
+  .el-menu-sider {
+    &:not(.el-menu--collapse) {
+      width: $layout-sider-width;
+    }
+  }
+}
+
+.collapse-sider-menu {
+  height: 48px;
+  display: flex;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: 16px;
+  align-items: center;
+  border-top: 1px solid rgba($color: #000000, $alpha: 0.06);
+
+  &:hover {
+    color: $--color-primary;
+  }
 }

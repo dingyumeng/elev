@@ -15,8 +15,6 @@
   overflow: hidden;
   width: $layout-sider-width;
   flex: 0 0 $layout-sider-width;
-  max-width: $layout-sider-width;
-  min-width: $layout-sider-width;
 }
 
 .layout-header-placeholder {
@@ -34,3 +32,9 @@
 @import './logo.scss';
 @import './space.scss';
 @import './sider.scss';
+
+.layout-sider-collapsed {
+  width: 64px;
+  flex: 0 0 64px;
+  transition: all .3s;
+}
