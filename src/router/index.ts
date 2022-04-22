@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import type { ComponentOptions } from 'vue';
 import VueRouter from 'vue-router';
-import type { RouteConfig } from 'vue-router';
+import type { RouteConfig, RouteMeta } from 'vue-router';
 import type { RouteConfigSingleView, RouteConfigMultipleViews } from 'vue-router/types/router';
 import { cloneDeep, omit } from 'lodash';
 
@@ -10,7 +10,29 @@ import Layout from '@/layout/index.vue';
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [
+/**
+ * 面包屑配置，支持false, 对象和数组形式配置：
+ *
+ * `false`: 命中路由时不展示面包屑，请注意有/无面包屑的页面切换时可能造成页面抖动。
+ *
+ * 对象(`{ title: string; navigatable?: false }`)：命中路由时由顶级路由配置开始寻找，依次展示所有找到的面包屑，`navigatable`为 false 时这一层面包屑不能跳转；**支持包含参数的path 跳转**。
+ *
+ * 数组(`string | { title: string; url?: string}`)：命中路由时直接展示指定的面包屑，传入字符串时会被转换为`{ title }`；url 为空时生成的面包屑不能跳转。
+ *
+ * TODO: Standard document format
+ */
+type MetaBreadcrumb = false | { title: string; navigatable?: false } | (string | { title: string; url?: string })[];
+
+/**
+ * Elev 扩展的路由定义
+ */
+export type EvRouteConfig = RouteConfig & {
+  meta?: RouteMeta & {
+    breadcrumb?: MetaBreadcrumb;
+  };
+};
+
+const routes: Array<EvRouteConfig> = [
   {
     path: '/',
     component: Layout,
