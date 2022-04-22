@@ -7,6 +7,7 @@ import { cloneDeep, omit } from 'lodash';
 
 import Dashboard from '@/views/index.vue';
 import Layout from '@/layout/index.vue';
+import Placeholder from '@/components/Placeholder.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,105 @@ const routes: Array<EvRouteConfig> = [
         name: 'Dashboard',
         component: Dashboard,
       },
+      //#region fake routes
+      // fake flatted routes
+      {
+        path: 'auth/roles',
+        name: 'RoleManage',
+        component: Placeholder,
+        props: {
+          cname: 'role-manage',
+        },
+        meta: {
+          breadcrumb: [{ title: '权限管理' }, { title: '角色管理' }],
+        },
+      },
+      {
+        path: 'auth/roles/create',
+        name: 'RoleCreate',
+        component: Placeholder,
+        props: {
+          cname: 'role-create',
+        },
+        meta: {
+          breadcrumb: [{ title: '权限管理' }, { title: '角色管理' }, { title: '创建角色' }],
+        },
+      },
+      // fake nested routes
+      {
+        path: 'class',
+        meta: {
+          breadcrumb: { title: '班级管理', navigatable: false },
+        },
+        children: [
+          {
+            path: 'students',
+            meta: {
+              breadcrumb: { title: '学生管理' },
+            },
+            children: [
+              {
+                path: '',
+                name: 'StudentManage',
+                component: Placeholder,
+                props: {
+                  cname: 'student-manage',
+                },
+              },
+            ],
+          },
+          {
+            path: 'teachers',
+            meta: {
+              breadcrumb: { title: '教师管理', navigatable: false },
+            },
+            children: [
+              {
+                path: '',
+                name: 'TeacherManage',
+                component: Placeholder,
+                props: {
+                  cname: 'teacher-manage',
+                },
+                meta: {
+                  breadcrumb: { title: '教师列表' },
+                },
+              },
+              {
+                path: ':id',
+                meta: {
+                  breadcrumb: { title: '教师详情' },
+                },
+                children: [
+                  {
+                    path: '',
+                    name: 'TeacherView',
+                    component: Placeholder,
+                    props: route => ({
+                      cname: `teacher-${route.params.id}`,
+                    }),
+                    meta: {
+                      breadcrumb: false,
+                    },
+                  },
+                  {
+                    path: 'hobbies',
+                    name: 'TeacherHobbiesView',
+                    component: Placeholder,
+                    props: route => ({
+                      cname: `teacher-${route.params.id}'s-hobbies`,
+                    }),
+                    meta: {
+                      breadcrumb: { title: '教师爱好' },
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      //#endregion
     ],
   },
 ];
