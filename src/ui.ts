@@ -7,10 +7,14 @@ import './assets/theme.scss';
 import './assets/styles.scss';
 import './assets/element-overwrite/index.scss';
 
+import EvDict from '@/components/dict/';
+
 export default {
   install(Vue: VueConstructor): void {
     Vue.config.productionTip = false;
 
     Vue.use(ElementUI, { size: 'small' });
+
+    Vue.use(EvDict /*, { labelKey: 'title' } */);
   },
 };
