@@ -13,8 +13,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "typeRoots": [
-      "./node_modules/",
-      "./src"
+      "node_modules/*",
+      "./src/*"
     ],
     "paths": {
       "@/*": [
