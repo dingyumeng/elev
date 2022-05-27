@@ -1,3 +1,4 @@
+@import '~element-ui/packages/theme-chalk/src/common/var.scss';
 @import './variables.scss';
 
 .layout-wrapper {
@@ -21,6 +22,20 @@
   width: 100%;
   height: 48px;
   line-height: 48px;
+}
+
+.layout-container .el-breadcrumb {
+  padding: 16px 0 16px 24px;
+  background-color: #fff;
+  box-shadow: $--box-shadow-light;
+
+  &:empty {
+    display: none;
+  }
+
+  .is-link {
+    font-weight: normal;
+  }
 }
 
 .layout-main-content {
